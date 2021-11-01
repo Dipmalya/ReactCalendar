@@ -1,0 +1,19 @@
+.react-calendar {
+    height: 85vh;
+}
+.react-calendar__navigation__arrow {
+    display: none;
+}
+.react-calendar__month-view__days__day--weekend {
+    color: black;
+}
+.react-calendar__tile--active {
+    background: none;
+    color: black;
+}
+.react-calendar__month-view__weekdays {
+    display: none !important;
+}
+.react-calendar__navigation {
+    margin-bottom: 0%;
+}
