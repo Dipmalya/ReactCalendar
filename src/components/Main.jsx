@@ -4,13 +4,13 @@ import CustomCalendar from "./Calendar";
 export default function Main() {
   return (
     <div className="row m-4">
-      {["01", "02", "03", "04", "05", "06", "07", "08", "09"].map((item, index) => (
-        <CustomCalendar
-          key={`cal-${index}`}
-          classProp={"pr-1 pb-1"}
-          value={new Date(`${item}/01/2021`)}
-        />
-      ))}
+      <div className="col-md-9">
+        <div className="row">
+          {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((item, index) => (
+            <CustomCalendar monthIndex={item} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
