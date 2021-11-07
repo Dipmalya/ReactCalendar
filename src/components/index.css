@@ -25,3 +25,12 @@
   flex-flow: row wrap;
   justify-content: space-between;
 }
+.week-day {
+  background: #616159;
+  color: white;
+  padding-left: 0.055rem;
+}
+.weekends {
+  background: #888d89;
+  padding-right: 0.825rem;
+}
