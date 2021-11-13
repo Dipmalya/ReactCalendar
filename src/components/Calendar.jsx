@@ -21,15 +21,37 @@ export default class CustomCalendar extends Component {
   findDateDiff(currentDate, endDate) {
     return moment(currentDate, 'YYYY-MM-DD').diff(moment(endDate, 'YYYY-MM-DD'), 'days');
   }
+  createDate(monthIndex, dayCount) {
+    let date = `${new Date().getFullYear()}-${monthIndex}-`;
+    if (parseInt(dayCount) < 10) {
+      date += `0${dayCount}`
+    } else {
+      date += `${dayCount}`
+    }
+    return date;
+  }
   getDateClass(dayCount) {
-    const { monthIndex, currentDate } = this.props;
+    const { monthIndex, currentDate, lastDate, whiteBorders, violetBorders } = this.props;
     let classString = "";
     if (this.getDateString(`${new Date().getFullYear()}-${monthIndex}-${dayCount}`) ===
       this.getDateString(currentDate)) {
-      classString += "current-day";
+      classString += "current-day ";
     }
     if (this.findDateDiff(currentDate, `${new Date().getFullYear()}-${monthIndex}-${dayCount}`) > 30) {
-      classString += "disable-day";
+      classString += "disable-day ";
+    }
+    if (this.findDateDiff(lastDate, `${new Date().getFullYear()}-${monthIndex}-${dayCount}`) < 0) {
+      classString += "disable-day ";
+    }
+    if (violetBorders.includes(this.createDate(monthIndex, dayCount))) {
+      classString += "border-violet ";
+    }
+    if (whiteBorders.includes(this.createDate(monthIndex, dayCount))) {
+      classString += "border-white ";
+    }
+    if (this.getDateString(`${new Date().getFullYear()}-${monthIndex}-${dayCount}`) ===
+    this.getDateString("2021-02-19")) {
+      classString += "black-back ";
     }
     return classString
   }

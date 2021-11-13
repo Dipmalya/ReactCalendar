@@ -39,6 +39,29 @@
   border: 3px solid white;
   padding: 0.5rem 0.75rem;
 }
+.border-violet::before {
+  content: '';
+  position: absolute;
+  top: auto;
+  right: auto;
+  margin: -11px 19px;
+  border-top: 9px solid violet;
+  border-left: 9px solid transparent;
+  width: 0;
+}
+.border-white::before {
+  content: '';
+  position: absolute;
+  top: auto;
+  left: auto;
+  margin: -11px -12px;
+  border-top: 9px solid white;
+  border-right: 9px solid transparent;
+  width: 0;
+}
+.black-back {
+  background: black;
+}
 .disable-day {
   color: rgb(182, 177, 177);
 }
