@@ -11,17 +11,20 @@ export default function Main() {
             <div className="d-flex mr-1 week-day">
               {Object.values(DayIndex).map((item, index) =>
                 index < 5 ? (
-                  <div className="mr-3" style={{paddingLeft: '0.2rem'}}>{item}</div>
+                  <div className="mr-3" style={{paddingLeft: '0.65rem'}}>{item}</div>
                 ) : (
-                  <div className="weekends pl-2">{item}</div>
+                  <div className="weekends pl-3">{item}</div>
                 )
               )}
             </div>
           ))}
         </div>
         <div className="row">
-          {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((item, index) => (
-            <CustomCalendar monthIndex={item} />
+          {["01", "02", "03", "04", "05", "06", "07", "08", "09"].map((item, index) => (
+            <CustomCalendar
+            currentDate="2021-02-27"
+            monthIndex={item} 
+            />
           ))}
         </div>
       </div>

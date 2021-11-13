@@ -8,6 +8,7 @@
   background: #616159;
   padding: 0.75rem;
   height: 3rem;
+  font-weight: bold;
   color: white;
   width: 14.28%;
 }
@@ -32,5 +33,12 @@
 }
 .weekends {
   background: #888d89;
-  padding-right: 0.825rem;
+  padding-right: 0.895rem;
+}
+.current-day {
+  border: 3px solid white;
+  padding: 0.5rem 0.75rem;
+}
+.disable-day {
+  color: rgb(182, 177, 177);
 }
