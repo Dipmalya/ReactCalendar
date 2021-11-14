@@ -15,12 +15,15 @@ export default class CustomCalendar extends Component {
       return false;
     }
   }
+
   getDateString(date) {
     return new Date(date).toDateString().slice(0, 15);
   }
+
   findDateDiff(currentDate, endDate) {
     return moment(currentDate, 'YYYY-MM-DD').diff(moment(endDate, 'YYYY-MM-DD'), 'days');
   }
+
   createDate(monthIndex, dayCount) {
     let date = `${new Date().getFullYear()}-${monthIndex}-`;
     if (parseInt(dayCount) < 10) {
@@ -30,11 +33,12 @@ export default class CustomCalendar extends Component {
     }
     return date;
   }
-  getDateClass(dayCount) {
+
+  getDateClass(dayCount, index) {
     const { monthIndex, currentDate, lastDate, whiteBorders, violetBorders } = this.props;
     let classString = "";
     if (this.getDateString(`${new Date().getFullYear()}-${monthIndex}-${dayCount}`) ===
-      this.getDateString(currentDate)) {
+      this.getDateString(currentDate) && this.shoudShowDate(dayCount, index)) {
       classString += "current-day ";
     }
     if (this.findDateDiff(currentDate, `${new Date().getFullYear()}-${monthIndex}-${dayCount}`) > 30) {
@@ -43,14 +47,16 @@ export default class CustomCalendar extends Component {
     if (this.findDateDiff(lastDate, `${new Date().getFullYear()}-${monthIndex}-${dayCount}`) < 0) {
       classString += "disable-day ";
     }
-    if (violetBorders.includes(this.createDate(monthIndex, dayCount))) {
+    if (violetBorders.includes(this.createDate(monthIndex, dayCount)) &&
+      this.shoudShowDate(dayCount, index)) {
       classString += "border-violet ";
     }
-    if (whiteBorders.includes(this.createDate(monthIndex, dayCount))) {
+    if (whiteBorders.includes(this.createDate(monthIndex, dayCount)) &&
+      this.shoudShowDate(dayCount, index)) {
       classString += "border-white ";
     }
     if (this.getDateString(`${new Date().getFullYear()}-${monthIndex}-${dayCount}`) ===
-    this.getDateString("2021-02-19")) {
+      this.getDateString("2021-02-19")) {
       classString += "black-back ";
     }
     return classString
@@ -67,15 +73,15 @@ export default class CustomCalendar extends Component {
         <div className="calendar-date">
           {Array.from({ length: 6 }, (v, i) => i).map((day) => {
             return (
-              <div className="calendar-week">
+              <div key={day} className="calendar-week">
                 {Array.from({ length: 7 }, (v, i) => i + 1).map((day1) => (
                   <>
                     {day1 > 5 ? (
-                      <div className={`day weekend-day ${this.getDateClass(dayCount)}`}>
+                      <div key={day1} className={`day weekend-day ${this.getDateClass(dayCount, day1)}`}>
                         {this.shoudShowDate(dayCount, day1) ? dayCount++ : ""}
                       </div>
                     ) : (
-                      <div className={`day ${this.getDateClass(dayCount)}`}>
+                      <div key={day1} className={`day ${this.getDateClass(dayCount, day1)}`}>
                         {this.shoudShowDate(dayCount, day1) ? dayCount++ : ""}
                       </div>
                     )}

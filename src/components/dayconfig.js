@@ -1,9 +1,9 @@
 export const DayIndex = {
-    7: 'Su',
-    1: 'Mo',
-    2: 'Tu',
-    3: 'We',
-    4: 'Th',
-    5: 'Fr',
-    6: 'Sa'
+    1: 'Su',
+    2: 'Mo',
+    3: 'Tu',
+    4: 'We',
+    5: 'Th',
+    6: 'Fr',
+    7: 'Sa'
 }
